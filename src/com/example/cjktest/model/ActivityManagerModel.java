@@ -76,5 +76,13 @@ public class ActivityManagerModel {
 	public static void removeForegroundActivity(ChildActivity baseActivity) {
 		foregroundActivityList.remove(baseActivity);
 	}
+	
+	public static ChildActivity getForegroundActivity(){
+		int size = foregroundActivityList.size();
+		if(size > 0){
+			return foregroundActivityList.get(size - 1);
+		}
+		return null;
+	}
 
 }

@@ -1,8 +1,13 @@
 package com.example.cjktest;
 
+import android.content.Intent;
+import android.view.KeyEvent;
+
+import com.example.cjktest.model.ActivityManagerModel;
+import com.example.cjktest.uibase.ChildActivity;
 import com.example.cjktest.uibase.RootActivity;
 
-public class BaseRootActivity extends RootActivity {
+public abstract class BaseRootActivity extends RootActivity {
 	/**
 	 * 设置导航状态
 	 */
@@ -15,6 +20,17 @@ public class BaseRootActivity extends RootActivity {
 	 * 获取当前的activity
 	 */
 	public BaseChildActivity getCurrentActivity(){
-		return (BaseChildActivity)getCurrentActivity();
+		return (BaseChildActivity)super.getCurrentActivity();
 	}
+	
+	/**
+	 * 设置标题
+	 * @param title
+	 */
+	public abstract void setTopTitle(String title);
+	
+	
+	
+	
+
 }

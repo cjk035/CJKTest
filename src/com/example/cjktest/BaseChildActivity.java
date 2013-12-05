@@ -1,12 +1,16 @@
 package com.example.cjktest;
 
+import android.widget.TextView;
+
 import com.example.cjktest.log.CJKLog;
 import com.example.cjktest.uibase.ChildActivity;
 import com.example.cjktest.view.BaseNavBar;
 
-public class BaseChildActivity extends ChildActivity{
+public abstract class BaseChildActivity extends ChildActivity{
 	
 	private BaseNavBar mBaseNavBar;
+	private String title;
+	
 	/**
 	 * 设置底部栏索引
 	 * @return
@@ -31,5 +35,20 @@ public class BaseChildActivity extends ChildActivity{
 			mBaseNavBar.setSeleted(setNavIndex());
 			CJKLog.print("---setNavIndex()="+setNavIndex());
 		}
+		((BaseRootActivity)getRooActivity()).setTopTitle(title);
 	}
+	
+	protected void setTopTiltle(String title){
+		this.title = title;
+	}
+	
+	/**
+	 * 返回顶部标题
+	 * @return
+	 */
+	public String getTopTitle(){
+		return title;
+	}
+	
+	
 }

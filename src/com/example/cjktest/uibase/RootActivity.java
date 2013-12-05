@@ -138,6 +138,20 @@ public class RootActivity extends BaseSlidingMenuActivity implements Serializabl
     }
     
     /**
+     * 销毁子Activity
+     * @param activity
+     */
+    public void childFinish(ChildActivity activity){
+    	
+    	mLocalActivityManager.destroyActivity(activity.getClass().getSimpleName(), true);
+    	int size = ActivityManagerModel.liveActivityList.size();
+    	if(size > 0){
+    		ChildActivity childActivity = ActivityManagerModel.liveActivityList.get(size - 1);
+    		startCActivity(childActivity.getClass(), new Intent(this, childActivity.getClass()), childActivity.getOnChildActivityLifeListener());
+    	}  
+    }
+    
+    /**
      * 在RootActivity中启动一个子activity,并返回已启动的BaseActivity实例
      * @param cls      要启动的子Activity
      * @param listener 监听子Activity的生命周期的监听器 ,可以null
@@ -160,7 +174,7 @@ public class RootActivity extends BaseSlidingMenuActivity implements Serializabl
     	}
     	ChildActivity childActivity = getCurrentActivity();
     	return childActivity;
-    }  
+    }
     
      
     /**

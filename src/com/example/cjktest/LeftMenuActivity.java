@@ -1,10 +1,10 @@
 package com.example.cjktest;
 
-import com.example.cjktest.uibase.ChildActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 
-public class LeftMenuActivity extends ChildActivity{
+public class LeftMenuActivity extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

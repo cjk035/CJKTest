@@ -15,6 +15,7 @@ public class FourActivity extends BaseChildActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.four);
+		setTopTiltle("Four");
 		btn = (TextView) findViewById(R.id.text);
 		btn.setOnClickListener(new OnClickListener() {
 			@Override

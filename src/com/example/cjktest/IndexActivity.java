@@ -9,6 +9,7 @@ public class IndexActivity extends BaseChildActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.index);
+		setTopTiltle("Index");
 	}
 	
 	@Override

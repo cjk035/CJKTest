@@ -10,6 +10,7 @@ public class FiveActivity extends BaseChildActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.five);
+		setTopTiltle("Five");
 	}
 	
 	@Override

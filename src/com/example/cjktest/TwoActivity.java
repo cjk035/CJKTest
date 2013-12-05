@@ -10,6 +10,7 @@ public class TwoActivity extends BaseChildActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.two);
+		setTopTiltle("Two");
 	}
 	
 	@Override

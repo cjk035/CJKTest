@@ -136,4 +136,12 @@ public class ChildActivity extends FragmentActivity {
 	public RootActivity getRooActivity(){
 		return mRootActivity;
 	}
+	
+	@Override
+	public void finish() {
+		if(mRootActivity == null){
+//			mRootActivity.childFinish(this);
+			mRootActivity.finishFromChild(this);
+		}
+	}
 }
