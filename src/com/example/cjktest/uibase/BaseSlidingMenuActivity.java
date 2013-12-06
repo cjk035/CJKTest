@@ -3,6 +3,7 @@ package com.example.cjktest.uibase;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
@@ -50,7 +51,7 @@ OnOpenedListener, OnCloseListener, OnClosedListener{
      * 设置中间的containerView
      * @return
      */
-    protected LinearLayout getMiddleContainerView(){
+    protected AnimView getMiddleContainerView(){
     	return null;
     };
     

@@ -2,6 +2,7 @@ package com.example.cjktest;
 
 import com.example.cjktest.log.CJKLog;
 import com.example.cjktest.model.ActivityManagerModel;
+import com.example.cjktest.uibase.AnimView;
 import com.example.cjktest.uibase.ChildActivity;
 import com.example.cjktest.uibase.OnChildActivityLifeListener;
 import com.example.cjktest.uibase.RootActivity;
@@ -14,6 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,13 +28,14 @@ public class MainActivity extends BaseRootActivity implements OnClickNavBarListe
 	private BottomNavbar bottomNavbar;
 	private TextView titleTv;
 	private VerticalAnimView verticalAnimView;
+	IndexActivity indexActivity;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 	
 		Intent intent = new Intent(this, IndexActivity.class);
-		IndexActivity indexActivity = ((IndexActivity) startCActivity(IndexActivity.class, intent, this));
+		indexActivity = ((IndexActivity) startCActivity(IndexActivity.class, intent, this));
 		
 		TextView titleView = new TextView(this);
 		titleView.setText(indexActivity.getTopTitle());
@@ -49,9 +52,16 @@ public class MainActivity extends BaseRootActivity implements OnClickNavBarListe
 	}
 	
 	@Override
-	protected LinearLayout getMiddleContainerView() {
+	protected AnimView getMiddleContainerView() {
 		// TODO Auto-generated method stub
-		return (LinearLayout) findViewById(R.id.middle);
+		return (AnimView) findViewById(R.id.middle);
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		indexActivity.onResume();
 	}
 
 	@Override

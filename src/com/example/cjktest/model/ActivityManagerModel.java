@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import com.example.cjktest.log.CJKLog;
 import com.example.cjktest.uibase.ChildActivity;
 
 /*
@@ -79,6 +80,7 @@ public class ActivityManagerModel {
 	
 	public static ChildActivity getForegroundActivity(){
 		int size = foregroundActivityList.size();
+		CJKLog.print("getForegroundActivity----size="+size);
 		if(size > 0){
 			return foregroundActivityList.get(size - 1);
 		}

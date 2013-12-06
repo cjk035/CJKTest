@@ -32,13 +32,12 @@
         
     </RelativeLayout>
 
-    <LinearLayout
+    <com.example.cjktest.uibase.AnimView
         android:id="@+id/middle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/top"
-        android:layout_above="@+id/bottomNavbar"
-        android:orientation="vertical" />
+        android:layout_above="@+id/bottomNavbar"/>
 
     <com.example.cjktest.view.BottomNavbar
         android:id="@+id/bottomNavbar"

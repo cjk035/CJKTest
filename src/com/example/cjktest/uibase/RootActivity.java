@@ -2,10 +2,7 @@ package com.example.cjktest.uibase;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import com.example.cjktest.IndexActivity;
-import com.example.cjktest.LeftMenuActivity;
 import com.example.cjktest.R;
 import com.example.cjktest.log.CJKLog;
 import com.example.cjktest.model.ActivityManagerModel;
@@ -15,11 +12,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
 
 public class RootActivity extends BaseSlidingMenuActivity implements Serializable{
 	
@@ -31,7 +27,7 @@ public class RootActivity extends BaseSlidingMenuActivity implements Serializabl
      * {@hide}
      */
     protected LocalActivityManager mLocalActivityManager;
-    private LinearLayout containerView;
+    private AnimView containerView;
     private LinearLayout leftContainerView;
     
     private ArrayList<OnChildActivityLifeListener> childChangeListeners;
@@ -158,7 +154,6 @@ public class RootActivity extends BaseSlidingMenuActivity implements Serializabl
      * @return         子Activity
      */
     protected ChildActivity startCActivity(Class<?> cls, Intent intent, OnChildActivityLifeListener listener){
-    	
     	if(!ActivityManagerModel.liveActivityList.contains(getChildActivity(cls.getSimpleName()))){
     		intent.putExtra("OnChildActivityChangeListener", listener);
         	intent.putExtra("RootActivity", this);
@@ -166,12 +161,8 @@ public class RootActivity extends BaseSlidingMenuActivity implements Serializabl
     	
     	LayoutParams params = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
     	View view = mLocalActivityManager.startActivity(cls.getSimpleName(), intent).getDecorView();
-    	LinearLayout parent = (LinearLayout) view.getParent();
-
-    	getContainerView().removeAllViews();
-    	if(parent == null){
-    		getContainerView().addView(view, params);
-    	}
+    	view.setTag(cls.getSimpleName());
+    	getContainerView().addView(view, params);
     	ChildActivity childActivity = getCurrentActivity();
     	return childActivity;
     }
@@ -181,9 +172,11 @@ public class RootActivity extends BaseSlidingMenuActivity implements Serializabl
      * 获取containerView
      * @return
      */
-    protected LinearLayout getContainerView(){
+    protected AnimView getContainerView(){
     	if(containerView == null){
     		containerView = getMiddleContainerView();
+    		containerView.setAnimInId(R.anim.push_left_in);
+    		containerView.setAnimOutId(R.anim.push_left_out);
     	}
     	return containerView;
     }
